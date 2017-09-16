@@ -1,5 +1,8 @@
 <?php
 
+use App\Book;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,20 @@
 |
 */
 
+/*
 Route::get('/', function () {
-    return view('welcome');
+    return view('books');
+});
+ */
+
+Route::group(['middleware' => ['web']], function() {
+	Route::get('/', function(){
+		echo 'Hello, Laravel';
+	});
+
+	Route::post('/book', function(Request $request) {
+	});
+
+	Route::delete('/book/{book}', function(Book $book) {
+	});
 });
