@@ -22,7 +22,11 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function() {
 	Route::get('/', function(){
-		echo 'Hello, Laravel';
+		$books = Book::all();
+		# テンプレートのbooks変数に$booksを入れる
+		return view('books', [
+			'books' => $books
+		]);
 	});
 
 	Route::post('/book', function(Request $request) {
